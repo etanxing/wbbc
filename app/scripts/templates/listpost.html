@@ -1,0 +1,18 @@
+<header class="entry-header">
+    <h1 class="entry-title">
+        <a href="<%=post.slug %>" title="<%=post.title %>"><%=post.title %></a>
+    </h1>
+    <!-- .comments-link -->
+</header>
+<!-- .entry-header -->
+<div class="entry-content">
+    <p>
+        <%=post.content %>
+    </p>
+</div>
+<!-- .entry-content -->
+<footer class="entry-meta">
+    This entry was posted in
+    <%=post.date %>
+</footer>
+<!-- .entry-meta -->
