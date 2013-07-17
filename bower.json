@@ -10,7 +10,8 @@
     "modernizr": "~2.6.2",
     "backbone.paginator": "latest",
     "Flat-UI": "https://github.com/designmodo/Flat-UI.git",
-    "prism": "latest"
+    "prism": "latest",
+    "moment": "~2.1.0"
   },
   "devDependencies": {}
 }

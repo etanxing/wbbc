@@ -5,8 +5,9 @@ define([
     'backbone',
     'text!../templates/post.html',
     '../common',
-    'prism'
-], function ($, Backbone, post, Common, Prism) {
+    'prism',
+    'moment'
+], function ($, Backbone, post, Common, Prism, moment) {
     'use strict';
 
     var PostView = Backbone.View.extend({
@@ -37,7 +38,8 @@ define([
             Common.status.set('processing', false);
 
             $(this.el).html(_.template(post)({
-                post  : this.model.has('post')?this.model.get('post'):this.model.toJSON()
+                post  : this.model.has('post')?this.model.get('post'):this.model.toJSON(),
+                date  : moment(this.model.get('date'), 'YYYY-MM-DDTHH:mm:ss Z').format('DD/MM/YYYY')
             }))
             
             $('#primary').append(this.el);

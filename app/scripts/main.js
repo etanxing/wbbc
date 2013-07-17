@@ -30,7 +30,8 @@ require.config({
         underscore: '../bower_components/underscore-amd/underscore',
         text: '../bower_components/requirejs-text/text',
         paginator : '../bower_components/backbone.paginator/lib/backbone.paginator',
-        prism : '../bower_components/prism/prism'
+        prism : '../bower_components/prism/prism',
+        moment : '../bower_components/moment/moment',
     }
 });
 
