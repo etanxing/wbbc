@@ -1,9 +1,9 @@
 <hgroup>
     <h1 class="site-title">
-        <a href="http://william.xingyp.com/" title="William XING" rel="home">William XING</a>
+        <a href="http://william.xingyp.com/" title="<%=settings['site-title']%>" rel="home"><%=settings['site-title']%></a>
     </h1>
     <h2 class="site-description">
-        Articles for developers
+        <%=settings['site-tagline']%>
     </h2>
 </hgroup>
 <nav id="site-navigation" class="main-navigation" role="navigation">
@@ -17,7 +17,7 @@
                 <a href="" title="">Home</a>
             </li>
             <li>
-                <a href="" title="about">About</a>
+                <a href="#about" title="about">About</a>
             </li>
         </ul>
     </div>

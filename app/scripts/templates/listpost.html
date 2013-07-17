@@ -1,18 +1,30 @@
 <header class="entry-header">
     <h1 class="entry-title">
-        <a href="<%=post.slug %>" title="<%=post.title %>"><%=post.title %></a>
+        <a href="<%=post.slug %>" title="<%=post.slug %>" class="internal-link"><%=post.title %></a>
     </h1>
     <!-- .comments-link -->
 </header>
 <!-- .entry-header -->
 <div class="entry-content">
     <p>
-        <%=post.content %>
+    	<% %>
+        <%=post.content.slice(0, post.content.indexOf('<!--more-->')) %>
+        <% if (post.content.indexOf('<!--more-->') < post.content.length - 11) { %>
+        <a href="<%=post.slug %>" title="<%=post.slug %>" class="internal-link">Continue reading →</a>
+        <% } %>
     </p>
 </div>
 <!-- .entry-content -->
 <footer class="entry-meta">
-    This entry was posted in
+    This entry was 
+    <% if (post.tags && post.tags.length > 0) { %>
+        tagged
+        <%=(_.map(post.tags, function(tag) { 
+            return '<a href="tag/' + tag + '" rel="tag">' + tag + '</a>'
+            })).join(', ') %>
+        and
+    <% } %>
+    posted on
     <%=post.date %>
 </footer>
 <!-- .entry-meta -->

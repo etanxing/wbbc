@@ -19,6 +19,9 @@ require.config({
                 'backbone'
             ],
             exports : 'Backbone.Paginator'
+        },
+        prism : {
+            exports: 'Prism'
         }
     },
     paths: {
@@ -26,7 +29,8 @@ require.config({
         backbone: '../bower_components/backbone-amd/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
         text: '../bower_components/requirejs-text/text',
-        paginator : '../bower_components/backbone.paginator/lib/backbone.paginator'
+        paginator : '../bower_components/backbone.paginator/lib/backbone.paginator',
+        prism : '../bower_components/prism/prism'
     }
 });
 
@@ -35,8 +39,10 @@ require([
     'routes/router',
     'backbone'
 ], function (Common, Router, Backbone) {
-    Common.init();
-
-    var router = new Router;
-    Backbone.history.start();
+    Common.init({
+        onload : function() {
+            new Router();
+            Backbone.history.start();
+        }
+    });
 });

@@ -4,8 +4,9 @@ define([
     'jquery',
     'backbone',
     'text!../templates/post.html',
-    '../common'
-], function ($, Backbone, post, Common) {
+    '../common',
+    'prism'
+], function ($, Backbone, post, Common, Prism) {
     'use strict';
 
     var PostView = Backbone.View.extend({
@@ -40,6 +41,9 @@ define([
             }))
             
             $('#primary').append(this.el);
+
+            Prism.highlightAll();
+            
             this.$el.fadeIn();
         },
 

@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/u-WUoqrET9fUeobQW7jkRbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzOY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBqfTCPadK0KLfdEfFtGWCYw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/PRmiXeptR36kaC0GEAetxhLE7eCesZRIBkkq27EgTqg.woff) format('woff');
+}
+
 /*
 Theme Name: Twenty Twelve
 Theme URI: http://wordpress.org/extend/themes/twentytwelve
@@ -883,18 +908,12 @@ article.sticky .featured-post {
 .entry-content code,
 .comment-content code {
 	font-family: Consolas, Monaco, Lucida Console, monospace;
-	font-size: 12px;
-	font-size: 0.857142857rem;
-	line-height: 2;
 }
 .entry-content pre,
 .comment-content pre {
 	border: 1px solid #ededed;
 	color: #666;
 	font-family: Consolas, Monaco, Lucida Console, monospace;
-	font-size: 12px;
-	font-size: 0.857142857rem;
-	line-height: 1.714285714;
 	margin: 24px 0;
 	margin: 1.714285714rem 0;
 	overflow: auto;

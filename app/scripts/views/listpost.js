@@ -13,7 +13,7 @@ define([
         className : 'listpost',
 
         events: {
-            'click .entry-title a'  : 'goentry'
+            'click a.internal-link'  : 'goentry'
         },
 
         initialize: function(){

@@ -6,8 +6,9 @@ define([
     'backbone',
     '../views/listpost',
     '../views/navigation',
-    '../common'
-], function ($, _, Backbone, ListPostView, NavigationView, Common) {
+    '../common',    
+    'prism'
+], function ($, _, Backbone, ListPostView, NavigationView, Common, Prism) {
     'use strict';
 
     var MainView = Backbone.View.extend({        
@@ -23,7 +24,9 @@ define([
         render : function() {
             $('.content').html(this.$el);            
             Common.status.set('processing', false);
-            this.$el.fadeIn();
+            this.$el.fadeIn(function(){
+                Prism.highlightAll();
+            });
         },
 
         renderPost: function (post) {

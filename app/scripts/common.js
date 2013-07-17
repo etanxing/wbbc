@@ -8,13 +8,12 @@ define([
     'use strict';
 
     var app = (function () {
-        var _server = 'http://wbb.ap01.aws.af.cm/',
+        var _server = 'http://localhost:7777/', //http://wbb.ap01.aws.af.cm/ http://localhost:7777/
             _router = '',
         	_status = new Backbone.Model({
         		processing : false,
                 router : ''
-        	}),
-        	_settings = new Backbone.Model();
+        	});
 
         var _options = {
         	loading : function (status, options) {
@@ -28,15 +27,22 @@ define([
         	}
         }
 
-        var _init = function (options) {        	
+        var _init = function (options, context) {        	
             var opts = _.defaults(options || {}, _options);
-            _status.on('change:processing', opts.loading);
-            _settings.fetch({
+
+            (new Backbone.Collection()).fetch({
             	url: _server + 'api/settings',
-            	success : function(model) {
-            		opts.onload(model);
+            	success : function(collection) {
+                    var settings = {};
+                    collection.each(function (model){
+                        settings[model.get('name')] = model.get('value');
+                    });
+                    context.settings = settings;
+            		opts.onload(settings);
             	}
             });
+
+            _status.on('change:processing', opts.loading);
         };
 
         return {
@@ -51,8 +57,7 @@ define([
             },
 
             init: function (options) {
-                _init(options);
-                this.Settings = _settings;
+                _init(options, this);
             },
 
             server : _server //http://localhost:7777
