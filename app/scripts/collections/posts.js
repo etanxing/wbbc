@@ -36,7 +36,7 @@ define([
 
 		parse: function (resp) {
 			var items = resp.posts;
-			this.totalRecords = resp.info.totalRecords;	
+			this.totalRecords = resp.count;	
 			return items;
 		}
 	});
