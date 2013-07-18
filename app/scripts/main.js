@@ -36,14 +36,9 @@ require.config({
 });
 
 require([
-    'common',
     'routes/router',
     'backbone'
-], function (Common, Router, Backbone) {
-    Common.init({
-        onload : function() {
-            new Router();
-            Backbone.history.start();
-        }
-    });
+], function (Router, Backbone) {
+    new Router();
+    Backbone.history.start();
 });

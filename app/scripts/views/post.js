@@ -37,16 +37,24 @@ define([
         renderPost: function() {
             Common.status.set('processing', false);
 
-            $(this.el).html(_.template(post)({
-                post  : this.model.has('post')?this.model.get('post'):this.model.toJSON(),
-                date  : moment(this.model.get('date'), 'YYYY-MM-DDTHH:mm:ss Z').format('DD/MM/YYYY')
-            }))
+            $(this.el).html(_.template(post)(this.processModel()));
             
             $('#primary').append(this.el);
 
             Prism.highlightAll();
             
             this.$el.fadeIn();
+        },
+
+        processModel : function() {
+            var post = this.model.has('post')?this.model.get('post'):this.model.toJSON();
+            post.date = moment(post.date, 'YYYY-MM-DDTHH:mm:ss Z').format('DD/MM/YYYY');
+            
+            Common.status.set('doctitle', document.title + ' | ' + post.title);
+
+            return {
+                post  : post
+            }
         },
 
         unrender: function (transition) {

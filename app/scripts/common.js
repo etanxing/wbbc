@@ -12,7 +12,8 @@ define([
             _router = '',
         	_status = new Backbone.Model({
         		processing : false,
-                router : ''
+                router : '',
+                doctitle : ''
         	});
 
         var _options = {
@@ -24,7 +25,11 @@ define([
 
         	onload : function (model, response, options) {
         		console.log('default onload');
-        	}
+        	},
+
+            changeTitle : function(model, title) {
+                document.title = title ;
+            }
         }
 
         var _init = function (options, context) {        	
@@ -43,6 +48,7 @@ define([
             });
 
             _status.on('change:processing', opts.loading);
+            _status.on('change:doctitle', opts.changeTitle);
         };
 
         return {

@@ -23,12 +23,21 @@ define([
         },
 
         render: function() {
-            this.$el.html(_.template(listpost)({
-                post  : this.model.toJSON(),
-                date  : moment(this.model.get('date'), 'YYYY-MM-DDTHH:mm:ss Z').format('DD/MM/YYYY')
-            }))
-
+            this.$el.html(_.template(listpost)(this.processModel()));
             return this;
+        },
+
+        processModel : function() {
+            var post = this.model.toJSON(),
+                moreindex = post.content.indexOf('<!--more-->');
+
+            if (moreindex >= 0) post.content = post.content.slice(0, moreindex);
+            post.date = moment(post.date, 'YYYY-MM-DDTHH:mm:ss Z').format('DD/MM/YYYY');
+
+            return {
+                post  : post,
+                more  : moreindex >= 0
+            }
         },
 
         goentry : function(e){

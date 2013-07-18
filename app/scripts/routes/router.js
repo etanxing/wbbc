@@ -17,6 +17,8 @@ define([
 
     var Router = Backbone.Router.extend({
     	initialize : function() {
+            Common.init();
+
     		this.posts = new Posts;
 
     		this.views = {
@@ -35,49 +37,56 @@ define([
     	},
 
         hashlist : function(router){
+            this.view = this.views[(router === 'pageing'?'main':router) + 'View'];
             Common.status.set('router', router);
+            Common.status.set('doctitle', Common.settings['site-title']);
         },
 
         // Hash maps for routes
         routes : {
-            ''          : 'index',
+            ''          : 'main',
             'p/:pageid' : 'pageing',
             '*path'     : 'post'
         },
 
         post : function(path){
+            //Before switch page
             var self = this,
-                transition = new $.Deferred(),
                 post = this.posts.findWhere({ slug : path});
-            
-            Common.status.set('processing', true);    
-            this.views.mainView.unrender(transition);
+
             this.views.postView = new PostView({model:post || new Post({slug : path})});
-      
-            transition.done(function () {
+
+            //Switch page and what to do after switch
+            this.switchView(function() {
                 self.views.postView.render();
-            });
+            });            
         },
 
-        index: function(){
+        main: function(){
             this.pageing(1);
         },
 
         pageing: function (pageid) {
+            var self = this;
+
+            //Switch page and what to do after switch
+            this.switchView(function() {
+               self.posts.goTo(pageid, {silent:false});
+            }); 
+        },
+
+        switchView : function(afterswitch) {
             var self = this,
                 transition = new $.Deferred();
 
-            Common.status.set('processing', true);
-
-            if (Common.status.get('router') == 'post') {
-                this.views.postView.unrender(transition)
+            Common.status.set('processing', true);    
+            if (this.view) {
+                this.view.unrender(transition);
             } else {
-                this.views.mainView.unrender(transition);
+                transition.resolve();
             }
 
-            transition.done(function () {
-                self.posts.goTo(pageid, {silent:false});
-            });
+            transition.done(afterswitch);
         }
     });
 

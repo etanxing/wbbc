@@ -8,8 +8,8 @@
 <div class="entry-content">
     <p>
     	<% %>
-        <%=post.content.slice(0, post.content.indexOf('<!--more-->')) %>
-        <% if (post.content.indexOf('<!--more-->') < post.content.length - 11) { %>
+        <%=post.content %>
+        <% if (more) { %>
         <a href="<%=post.slug %>" title="<%=post.slug %>" class="internal-link">Continue reading →</a>
         <% } %>
     </p>
@@ -25,6 +25,6 @@
         and
     <% } %>
     posted on
-    <%=date %>
+    <%=post.date %>
 </footer>
 <!-- .entry-meta -->
