@@ -9,10 +9,8 @@ define([
 ], function (_, Backbone, Post, Paginator, Common) {
     'use strict';
 
-    // var Posts = Backbone.Collection.extend({
-    //     model: Post,
-    //     url : 'http://localhost:7777/api/items'
-    // });
+	//"{"silent":true, "add":true,"merge":false,"remove":false,"collection":[], "previousModels":[]}"
+	//"{"silent":false,"add":true,"merge":true, "remove":true, "parse":true,"data":"$perpage=3&$page=1"}
 
 	var Posts = Paginator.requestPager.extend({
 		model : Post,

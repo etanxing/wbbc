@@ -21,12 +21,14 @@ define([
             this.navView = new NavigationView({collection : this.collection});
         },
 
-        render : function() {
+        render : function(options) {
             $('.content').html(this.$el);            
             Common.status.set('processing', false);
             this.$el.fadeIn(function(){
                 Prism.highlightAll();
             });
+
+            options && options.renderPosts && this.collection.each(this.renderPost);
         },
 
         renderPost: function (post) {

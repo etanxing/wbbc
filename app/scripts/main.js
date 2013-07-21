@@ -13,14 +13,14 @@ require.config({
             ],
             exports: 'Backbone'
         },
-        paginator : {
-            deps : [
+        paginator: {
+            deps: [
                 'jquery',
                 'backbone'
             ],
-            exports : 'Backbone.Paginator'
+            exports: 'Backbone.Paginator'
         },
-        prism : {
+        prism: {
             exports: 'Prism'
         }
     },
@@ -29,16 +29,23 @@ require.config({
         backbone: '../bower_components/backbone-amd/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
         text: '../bower_components/requirejs-text/text',
-        paginator : '../bower_components/backbone.paginator/lib/backbone.paginator',
-        prism : '../bower_components/prism/prism',
-        moment : '../bower_components/moment/moment',
+        paginator: '../bower_components/backbone.paginator/lib/backbone.paginator',
+        prism: '../bower_components/prism/prism',
+        moment: '../bower_components/moment/moment',
     }
 });
 
 require([
     'routes/router',
-    'backbone'
-], function (Router, Backbone) {
-    new Router();
+    'backbone',
+    'common'
+], function(Router, Backbone, Common) {
     Backbone.history.start();
+    
+    Common.init({
+        onload: function(data) {
+            new Router({data : data });            
+        }
+    });
+
 });
