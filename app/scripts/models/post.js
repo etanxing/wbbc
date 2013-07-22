@@ -16,7 +16,7 @@ define([
             return Common.server + 'api/item/slug/' + this.get('slug')
         },
         parse: function(resp) {
-            return  resp.post;
+            return  resp.post || resp;
         }
     });
 

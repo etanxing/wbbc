@@ -1,14 +1,11 @@
 /*global define*/
 
-define([
-    'jquery',
-    'underscore',
-    'backbone'
-], function($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     'use strict';
 
     var app = (function() {
-        var _server = 'http://localhost:7777/', //http://wbb.ap01.aws.af.cm/ http://localhost:7777/
+        var _server = 'http://localhost:7777/',
+            //http://wbb.ap01.aws.af.cm/ http://localhost:7777/
             _router = '',
             _status = new Backbone.Model({
                 processing: false,
@@ -35,7 +32,7 @@ define([
 
             _init = function(options, context) {
                 var opts = _.defaults(options || {}, _options),
-                    url = _server + 'api/bootstrap' + Backbone.history.location.pathname + '?$perpage=3&slug=' + Backbone.history.location.hash.slice(1);
+                    url = [_server, 'api/bootstrap', Backbone.history.location.pathname, '?$perpage=3&q=', Backbone.history.location.hash.slice(1)].join('');
 
                 $.ajax({
                     url: url,
@@ -48,7 +45,7 @@ define([
                         context.settings = settings;
                         opts.onload(data);
                     },
-                    error : function(xhr, resp, err) {
+                    error: function(xhr, resp, err) {
 
                     }
                 });

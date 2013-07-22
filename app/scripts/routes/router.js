@@ -43,8 +43,10 @@ define([
                 this.views.postView.render();
             } else {
                 this.hashlist('main');
-                this.posts.setDefaults()
-                this.posts.totalRecords = data.count;
+                this.posts.bootstrap({
+                    currentPage : data.page,
+                    totalRecords : data.count
+                });              
                 this.views.mainView.render({
                     renderPosts: true /* Render Posts manually*/
                 });
