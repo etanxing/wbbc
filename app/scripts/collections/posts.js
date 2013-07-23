@@ -4,15 +4,15 @@ define([
     'underscore',
     'backbone',
     'models/post',
-    'paginator',
-    '../common'
-], function (_, Backbone, Post, Paginator, Common) {
+    '../common',
+    'paginator'
+], function (_, Backbone, Post, Common) {
     'use strict';
 
 	//"{"silent":true, "add":true,"merge":false,"remove":false,"collection":[], "previousModels":[]}"
 	//"{"silent":false,"add":true,"merge":true, "remove":true, "parse":true,"data":"$perpage=3&$page=1"}
 
-	var Posts = Paginator.requestPager.extend({
+	var Posts = Backbone.Paginator.requestPager.extend({
 		model : Post,
 		paginator_core: {
 			type: 'GET',
