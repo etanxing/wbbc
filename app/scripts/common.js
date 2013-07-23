@@ -4,8 +4,8 @@ define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
     'use strict';
 
     var app = (function() {
-        var _server = 'http://localhost:7777/',
-            //http://wbb.ap01.aws.af.cm/ http://localhost:7777/
+        var _server = 'http://wbbaws.aws.af.cm/',
+            //http://wbb.ap01.aws.af.cm/ http://localhost:7777/ http://wbbaws.aws.af.cm/
             _router = '',
             _status = new Backbone.Model({
                 processing: false,

@@ -3,3 +3,5 @@ temp
 dist
 app/bower_components
 .tmp/
+CNAME
+index.html
