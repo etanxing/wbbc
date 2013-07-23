@@ -3,3 +3,5 @@ app
 .tmp
 npm-debug.log
 Procfile
+Gruntfile.js
+dist
